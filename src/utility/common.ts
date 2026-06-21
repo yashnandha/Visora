@@ -1,1 +1,0 @@
-// App-wide helper functions.

@@ -1,7 +1,30 @@
 {
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
-    "types": ["jest"]
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "@imageIndex": ["./src/assets/imageIndex.ts"],
+      "@svgIndex": ["./src/assets/svgIndex.ts"],
+      "@components": ["./src/components/componentsIndex.ts"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@card": ["./src/components/cardIndex.ts"],
+      "@i18n/*": ["./src/i18n/*"],
+      "@navigation/*": ["./src/navigation/*"],
+      "@screenName": ["./src/navigation/screenName.ts"],
+      "@screens/*": ["./src/screens/*"],
+      "@redux/*": ["./src/services/redux/*"],
+      "@api/*": ["./src/services/api/*"],
+      "@config/*": ["./src/services/config/*"],
+      "@validations/*": ["./src/services/validations/*"],
+      "@theme": ["./src/theme/index.ts"],
+      "@utility/*": ["./src/utility/*"],
+      "@query/*": ["./src/services/query/*"]
+    },
+    "module": "esnext",
+    "typeRoots": ["src/types"],
+    "strict": true,
+    "moduleResolution": "bundler"
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["**/node_modules", "**/Pods"]

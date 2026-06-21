@@ -1,3 +1,42 @@
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
+  plugins: [
+    'react-native-worklets/plugin',
+    // 'module:react-native-dotenv',
+    [
+      'module-resolver',
+      {
+        extensions: [
+          '.ios.js',
+          '.android.js',
+          '.ios.jsx',
+          '.android.jsx',
+          '.js',
+          '.jsx',
+          '.json',
+          '.ts',
+          '.tsx',
+          '.style.ts',
+        ],
+        alias: {
+          '@imageIndex': './src/assets/imageIndex.ts',
+          '@svgIndex': './src/assets/svgIndex.ts',
+          '@components': './src/components/componentsIndex.ts',
+          '@i18n': './src/i18n',
+          '@commonComponents': './src/components/common',
+          '@card': './src/components/cardIndex.ts',
+          '@hooks': './src/hooks',
+          '@navigation': './src/navigation',
+          '@screenName': './src/navigation/screenName.ts',
+          '@screens': './src/screens',
+          '@redux': './src/services/redux',
+          '@api': './src/services/api',
+          '@config': './src/services/config',
+          '@theme': './src/theme',
+          '@utility': './src/utility',
+          '@query': './src/services/query',
+        },
+      },
+    ],
+  ],
 };

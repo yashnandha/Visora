@@ -1,0 +1,229 @@
+# Machine-readable folder structure for scaffolding and MCP.
+# Edit this file to add/remove folders. Re-run: npm run scaffold
+
+version: 1
+root: src
+
+folders:
+  - assets/image
+  - assets/svg
+  - assets/gif
+  - assets/fonts
+  - components/card
+  - components/common/header
+  - hooks
+  - i18n
+  - theme
+  - navigation/stacks
+  - navigation/bottom
+  - navigation/drawer
+  - screens/auth/login
+  - utility/validation
+  - services/config
+  - services/api
+  - services/redux/users
+
+files:
+  # Asset indexes
+  - path: assets/svgIndex.ts
+    template: asset-index
+  - path: assets/imageIndex.ts
+    template: asset-index
+  - path: assets/gifIndex.ts
+    template: asset-index
+
+  # Component indexes
+  - path: components/cardIndex.ts
+    content: |
+      // Export card components here.
+  - path: components/componentsIndex.ts
+    content: |
+      // Export shared components here.
+
+  # Theme
+  - path: theme/color.ts
+    content: |
+      export const colors = {
+        primary: '#000000',
+        background: '#f7f7f7',
+        text: '#000000',
+      };
+  - path: theme/font.ts
+    content: |
+      export const fonts = {
+        regular: 'System',
+        bold: 'System',
+      };
+  - path: theme/index.ts
+    content: |
+      export * from './color';
+      export * from './font';
+      export * from './defaultStyles';
+  - path: theme/defaultStyles.ts
+    content: |
+      import { StyleSheet } from 'react-native';
+      import { colors } from './color';
+
+      export const defaultStyles = StyleSheet.create({
+        container: {
+          flex: 1,
+          backgroundColor: colors.background,
+        },
+      });
+
+  # Navigation
+  - path: navigation/index.ts
+    content: |
+      // Export navigators here.
+  - path: navigation/stackParams.d.ts
+    content: |
+      // Declare all stack param lists here.
+
+  # Hooks
+  - path: hooks/useAppState.ts
+    template: hook-stub
+  - path: hooks/useAppNavigation.ts
+    template: hook-stub
+  - path: hooks/useRedux.ts
+    template: hook-stub
+  - path: hooks/useDebounce.ts
+    template: hook-stub
+  - path: hooks/useFormik.ts
+    template: hook-stub
+
+  # Utility
+  - path: utility/common.ts
+    content: |
+      // App-wide helper functions.
+  - path: utility/common.const.ts
+    content: |
+      // App-wide constants.
+  - path: utility/navigationServices.ts
+    content: |
+      // Imperative navigation helpers.
+  - path: utility/logs.ts
+    content: |
+      const isDev = __DEV__;
+
+      export const log = {
+        info: (...args: unknown[]) => {
+          if (isDev) console.log(...args);
+        },
+        error: (...args: unknown[]) => {
+          if (isDev) console.error(...args);
+        },
+      };
+  - path: utility/toast.ts
+    content: |
+      // Toast helper — wire to your toast library.
+      export const showToast = (message: string) => {
+        if (__DEV__) console.log('[toast]', message);
+      };
+  - path: utility/validation/formikSchema.ts
+    content: |
+      // Shared Yup schemas.
+  - path: utility/validation/validation.ts
+    content: |
+      // Shared regex validators.
+  - path: utility/validation/validationMessage.ts
+    content: |
+      // Shared validation messages.
+
+  # Services
+  - path: services/config/constant.ts
+    content: |
+      export const API_BASE_URL = '';
+  - path: services/config/params.ts
+    content: |
+      // API param keys and defaults.
+  - path: services/api/index.ts
+    content: |
+      export * from './api';
+  - path: services/api/api.ts
+    content: |
+      // Axios/fetch client setup.
+  - path: services/redux/rootReducer.ts
+    content: |
+      import { combineReducers } from 'redux';
+      import userReducer from './users/reducer';
+
+      export const rootReducer = combineReducers({
+        users: userReducer,
+      });
+  - path: services/redux/mmkvStorage.ts
+    content: |
+      // MMKV persistence adapter for redux-persist.
+  - path: services/redux/store.ts
+    content: |
+      import { configureStore } from '@reduxjs/toolkit';
+      import { rootReducer } from './rootReducer';
+
+      export const store = configureStore({
+        reducer: rootReducer,
+      });
+
+  # Example header component
+  - path: components/common/header/Header.tsx
+    template: component
+    vars:
+      name: Header
+      feature: header
+  - path: components/common/header/header.style.ts
+    template: style
+    vars:
+      feature: header
+  - path: components/common/header/headerProps.d.ts
+    template: props
+    vars:
+      name: Header
+      feature: header
+  - path: components/common/header/useHeader.ts
+    template: hook
+    vars:
+      name: Header
+      feature: header
+
+  # Example login screen
+  - path: screens/auth/login/Login.tsx
+    template: screen
+    vars:
+      name: Login
+      feature: login
+  - path: screens/auth/login/login.style.ts
+    template: style
+    vars:
+      feature: login
+  - path: screens/auth/login/loginProps.d.ts
+    template: props
+    vars:
+      name: Login
+      feature: login
+  - path: screens/auth/login/useLogin.ts
+    template: hook
+    vars:
+      name: Login
+      feature: login
+  - path: screens/auth/login/login.formik.ts
+    template: formik
+    vars:
+      feature: login
+
+  # Example redux module
+  - path: services/redux/users/type.ts
+    content: |
+      // Action type constants.
+  - path: services/redux/users/reducer.ts
+    content: |
+      const initialState = {};
+      export default function userReducer(state = initialState, action: { type: string }) {
+        return state;
+      }
+  - path: services/redux/users/action.ts
+    content: |
+      // Action creators.
+  - path: services/redux/users/userAPICall.ts
+    content: |
+      // User API calls.
+  - path: services/redux/users/interface.ts
+    content: |
+      // User state interfaces.

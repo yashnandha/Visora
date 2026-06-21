@@ -54,6 +54,10 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Visora requires camera access to take event photos and videos.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Visora requires microphone access to record audio for event videos.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

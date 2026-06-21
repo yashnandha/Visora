@@ -1,4 +1,2 @@
-const initialState = {};
-export default function userReducer(state = initialState, action: { type: string }) {
-  return state;
-}
+import userReducer from './userSlice';
+export default userReducer;

@@ -1,2 +1,8 @@
-// Declare all stack param lists here.
+export type AuthStackParamList = {
+  Login: undefined;
+};
 
+export type MainTabParamList = {
+  Camera: undefined;
+  Gallery: undefined;
+};

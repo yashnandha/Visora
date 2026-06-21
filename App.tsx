@@ -1,9 +1,9 @@
+import Route from '@navigation/index';
 import React from 'react';
-import { Text } from 'react-native';
 
 function App(): React.JSX.Element {
   return (
-    <Text>ssss</Text>
+    <Route />
   );
 }
 
